@@ -1,7 +1,7 @@
 🩺 Early Disease Detection using Machine Learning
 🌐 Live Demo
 
-👉 Try it here: [Early Disease Detection App](https://earlydiseasedetection-b7p66idbf76le89apqynzx.streamlit.app/)
+👉 Try it here: ["Early Disease Detection App" on my streamlit profile  ](https://share.streamlit.io/user/akashdeeppahan)
 
 
 📖 Overview
@@ -81,14 +81,12 @@ Instantly receive prediction results with probability scores
 
 🔗 Links
 
-🌐 Live App: https://earlydiseasedetection-b7p66idbf76le89apqynzx.streamlit.app/
-
 💻 GitHub Repository: https://github.com/AkashdeepPahan/Early_Disease_Detection
 
 
 📬 Contact
 
-👤 Akash Deep Pahan
+👤 Akashdeep Pahan
 🌐 GitHub: https://github.com/AkashdeepPahan
 
 🌐 Early Disease Detection Web App
