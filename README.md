@@ -1,128 +1,96 @@
 🩺 Early Disease Detection using Machine Learning
+🌐 Live Demo
 
-This project predicts Diabetes, Heart Disease, and Breast Cancer using machine learning models and provides an interactive Streamlit UI for users.
+👉 Try it here: [Early Disease Detection App](https://earlydiseasedetection-b7p66idbf76le89apqynzx.streamlit.app/)
 
-🚀 Features
 
-🔍 Disease Prediction for Diabetes, Heart Disease, and Breast Cancer
+📖 Overview
 
-📊 Multiple ML models trained (Logistic Regression, Random Forest, SVM, XGBoost, Neural Network, etc.)
+The Early Disease Detection system uses machine learning models to predict the likelihood of three major diseases — Diabetes, Heart Disease, and Breast Cancer — based on key medical parameters.
+This app empowers users and healthcare professionals with early insights to support preventive diagnosis and timely medical care.
 
-🎨 Stylish UI built with Streamlit
+⚙️ Features
 
-✅ Probability-based prediction (confidence score shown)
+✅ Predicts the risk of:
 
-💾 Saved models with joblib
+🩸 Diabetes
 
-📂 Project Structure
-Early_Disease_Detection/
-├── app.py                  # Streamlit UI
-├── models/                 # Saved ML models & scalers
-│   ├── diabetes_model.joblib
-│   ├── diabetes_scaler.joblib
-│   ├── heart_model.joblib
-│   ├── heart_scaler.joblib
-│   ├── cancer_model.joblib
-│   ├── cancer_scaler.joblib
-├── requirements.txt        # Python dependencies
-├── README.md               # Project documentation
+❤️ Heart Disease
 
-⚙️ Installation & Setup
+🎗️ Breast Cancer
 
-Clone the repository:
+✅ Clean, aesthetic, and responsive Streamlit UI
+✅ Real-time predictions from trained ML models
+✅ Ensemble approach for higher accuracy
+✅ Ready for both local and cloud deployment
+
+🧠 Technologies Used
+
+Python 3.11+
+
+Streamlit – User interface and hosting
+
+Scikit-learn – Model training and evaluation
+
+XGBoost – Gradient boosting for performance
+
+Pandas, NumPy – Data preprocessing
+
+Joblib – Model persistence
+
+🧩 Models Used
+
+Each disease uses multiple ML models including Logistic Regression, Random Forest, Gradient Boosting, SVM, KNN, and XGBoost.
+The best-performing models are stored in the /models/ directory.
+
+models/
+├── diabetes_model.joblib
+├── diabetes_scaler.joblib
+├── heart_model.joblib
+├── heart_scaler.joblib
+├── cancer_model.joblib
+├── cancer_scaler.joblib
+
+🚀 How to Run Locally
+
+Clone the repository
 
 git clone https://github.com/AkashdeepPahan/Early_Disease_Detection.git
 cd Early_Disease_Detection
 
 
-Install dependencies:
+Install dependencies
 
 pip install -r requirements.txt
 
 
-Run the app:
+Run the Streamlit app
 
 streamlit run app.py
 
-🌐 Deployment
+🖥️ Interface Preview
 
-You can deploy this project on Streamlit Cloud for free:
+✨ A minimal and elegant interface that allows users to:
 
-Push this repo to GitHub
+Input their medical parameters
 
-Go to Streamlit Cloud
+Select disease type
 
-Select your repo → choose app.py as the entry point
+Instantly receive prediction results with probability scores
 
-Done ✅ your app will be live with a public link!
 
-📊 Models Used
+🔗 Links
 
-Logistic Regression
+🌐 Live App: https://earlydiseasedetection-b7p66idbf76le89apqynzx.streamlit.app/
 
-Random Forest
+💻 GitHub Repository: https://github.com/AkashdeepPahan/Early_Disease_Detection
 
-Support Vector Machine (SVM)
 
-Gradient Boosting
+📬 Contact
 
-K-Nearest Neighbors (KNN)
+👤 Akash Deep Pahan
+🌐 GitHub: https://github.com/AkashdeepPahan
 
-Neural Network (MLP)
+🌐 Early Disease Detection Web App
 
-XGBoost
-
-🧪 Sample Inputs
-
-You can use the following values to test the app:
-
-🩸 Diabetes (8 features)
-Feature	Example (Normal)
-Pregnancies	2
-Glucose	110
-BloodPressure	70
-SkinThickness	25
-Insulin	80
-BMI	24.5
-DiabetesPedigreeFunction	0.35
-Age	35
-❤️ Heart Disease (13 features)
-Feature	Example (Normal)
-age	40
-sex	1 (Male), 0 (Female)
-cp	0 (typical angina)
-trtbps	120
-chol	200
-fbs	0 (false)
-restecg	1 (normal)
-thalachh	170
-exng	0 (no exercise-induced angina)
-oldpeak	0.0
-slp	2
-caa	0
-thall	2
-🎗️ Breast Cancer (30 features – shortened example)
-Feature	Example (Normal)
-mean radius	13.5
-mean texture	18.0
-mean perimeter	85.0
-mean area	550
-mean smoothness	0.095
-mean compactness	0.08
-mean concavity	0.05
-mean concave points	0.03
-mean symmetry	0.18
-mean fractal dimension	0.06
-radius error	0.4
-texture error	1.0
-...	...
-worst fractal dimension	0.08
-
-👉 These values represent a normal/healthy patient and should usually give a low probability of disease.
-
-📝 Disclaimer
-
-⚠️ This project is for educational purposes only.
-It should not be used for actual medical diagnosis.
-Always consult with a medical professional for health concerns.
-
+⭐ If you found this project useful, please consider starring the repository on GitHub — it helps a lot!
