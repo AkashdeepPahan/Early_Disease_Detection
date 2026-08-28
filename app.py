@@ -11,6 +11,7 @@ import io
 import re
 from difflib import SequenceMatcher
 from datetime import datetime
+from pathlib import Path
 from sklearn.datasets import load_breast_cancer
 from sklearn.impute import SimpleImputer
 from sklearn.metrics import confusion_matrix, roc_curve, auc, accuracy_score, precision_score, recall_score, f1_score
@@ -529,17 +530,18 @@ if not st.session_state["logged_in"]:
 # ─────────────────────────────────────────────────────────────
 #  MODEL LOADING
 # ─────────────────────────────────────────────────────────────
-MODEL_FOLDER = "./models"
+BASE_DIR = Path(__file__).resolve().parent
+MODEL_FOLDER = BASE_DIR / "models"
 
 @st.cache_resource
 def load_model(name):
     try:
-        model   = joblib.load(f"{MODEL_FOLDER}/{name}_model.joblib")
-        scaler  = joblib.load(f"{MODEL_FOLDER}/{name}_scaler.joblib")
-        feats   = joblib.load(f"{MODEL_FOLDER}/{name}_features.joblib")
-        return model, scaler, feats
-    except Exception:
-        return None, None, None
+        model   = joblib.load(MODEL_FOLDER / f"{name}_model.joblib")
+        scaler  = joblib.load(MODEL_FOLDER / f"{name}_scaler.joblib")
+        feats   = joblib.load(MODEL_FOLDER / f"{name}_features.joblib")
+        return model, scaler, feats, None
+    except Exception as exc:
+        return None, None, None, f"{type(exc).__name__}: {exc}"
 
 def predict(model, scaler, feat_order, data: dict):
     df = pd.DataFrame([data], columns=feat_order).astype(float)
@@ -636,9 +638,9 @@ def load_reference_dataset(model_key: str):
 
 @st.cache_data(show_spinner=False)
 def evaluate_model_performance(model_key: str):
-    model, scaler, feat_order = load_model(model_key)
+    model, scaler, feat_order, load_error = load_model(model_key)
     if model is None:
-        return {"error": "Model files not found"}
+        return {"error": load_error or "Model files not found"}
 
     try:
         X, y = load_reference_dataset(model_key)
@@ -1042,10 +1044,12 @@ PLOT_LAYOUT = dict(
 #  TAB 1 — SINGLE PREDICTION
 # ══════════════════════════════════════════════════════════════
 with tab_predict:
-    model, scaler, feat_order = load_model(cfg["key"])
+    model, scaler, feat_order, load_error = load_model(cfg["key"])
 
     if model is None:
         st.warning(f"No trained model found for **{disease_label}**. Please train and save models to `./models/` first.")
+        if load_error:
+            st.caption(f"Load error: {load_error}")
     else:
         st.markdown("<div class='section-title'>Patient Information</div>", unsafe_allow_html=True)
 
@@ -1370,9 +1374,11 @@ with tab_batch:
     )
 
     if uploaded_file is not None:
-        model_b, scaler_b, feat_order_b = load_model(cfg["key"])
+        model_b, scaler_b, feat_order_b, load_error_b = load_model(cfg["key"])
         if model_b is None:
             st.error("Model not found for this disease. Train and save models first.")
+            if load_error_b:
+                st.caption(f"Load error: {load_error_b}")
         else:
             try:
                 df_upload = pd.read_csv(uploaded_file)
@@ -1491,7 +1497,7 @@ with tab_batch:
             except Exception as e:
                 st.error(f"Error processing file: {e}")
     else:
-        model_b, scaler_b, feat_order_b = load_model(cfg["key"])
+        model_b, scaler_b, feat_order_b, _ = load_model(cfg["key"])
         if feat_order_b:
             st.markdown(f"**Expected columns for {disease_label}:**")
             st.code(", ".join(feat_order_b))
