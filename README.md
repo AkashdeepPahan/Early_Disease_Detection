@@ -1,134 +1,391 @@
- Early Disease Detection using Machine Learning
- Live Demo
+# 🩺 MediScan AI — Early Disease Detection
 
- Try it here: ["Early Disease Detection App" on my streamlit profile  ](https://share.streamlit.io/user/akashdeeppahan)
+<p align="center">
+  <strong>AI-powered multi-disease clinical risk assessment built with Python, Scikit-learn and Streamlit.</strong>
+</p>
 
+<p align="center">
+  <a href="https://earlydiseasedetection-7jqksvxcqvy3c8c9hyrgfi.streamlit.app/"><img src="https://img.shields.io/badge/Live%20Demo-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Live Demo"></a>
+  <a href="https://github.com/AkashdeepPahan/Early_Disease_Detection"><img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"></a>
+  <img src="https://img.shields.io/badge/Python-3.13-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.13">
+  <img src="https://img.shields.io/badge/Scikit--learn-1.7.1-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white" alt="Scikit-learn 1.7.1">
+</p>
 
- Overview
+<p align="center">
+  <em>Four disease modules • Saved ML pipelines • Probability-aware predictions • Interactive Streamlit dashboard</em>
+</p>
 
-The Early Disease Detection system uses machine learning models to predict the likelihood of four major diseases — Diabetes, Heart Disease, Breast Cancer, and Kidney Disease — based on key medical parameters.
-This app empowers users and healthcare professionals with early insights to support preventive diagnosis and timely medical care.
+---
 
- Features
+## 🌐 Live Application
 
-Predicts the risk of:
+### [🚀 Launch MediScan AI](https://earlydiseasedetection-7jqksvxcqvy3c8c9hyrgfi.streamlit.app/)
 
-Diabetes
+MediScan AI is deployed on Streamlit Community Cloud and can be accessed directly from a browser.
 
-Heart Disease
+---
 
-Breast Cancer
+## 📸 Interface Preview
 
-Kidney Disease
+<p align="center">
+  <img src="assets/dashboard.png" alt="MediScan AI dashboard" width="900">
+</p>
 
- Clean, aesthetic, and responsive Streamlit UI
- Real-time predictions from trained ML models
- Ensemble approach for higher accuracy
- Ready for both local and cloud deployment
+> The dashboard provides disease selection, clinical parameter input, prediction results, session history and model-performance views.
 
- Technologies Used
+---
 
-Python 3.11+
+## 🧠 What is MediScan AI?
 
-Streamlit – User interface and hosting
+**MediScan AI** is an end-to-end machine learning project that demonstrates how predictive models can be integrated into an interactive healthcare-oriented web application.
 
-Scikit-learn – Model training and evaluation
+The application provides preliminary risk assessments for:
 
-XGBoost – Gradient boosting for performance
+| Module | Purpose |
+|---|---|
+| 🫀 **Heart Disease** | Cardiovascular risk assessment |
+| 🩸 **Diabetes** | Diabetes risk assessment |
+| 🎗️ **Breast Cancer** | Breast cancer classification |
+| 🫘 **Kidney Disease** | Kidney disease risk assessment |
 
-Pandas, NumPy – Data preprocessing
+Instead of requiring users to interact with notebooks or Python scripts, MediScan AI wraps the trained models in a clean Streamlit interface.
 
-Joblib – Model persistence
+---
 
- Models Used
+## ✨ Key Features
 
-Each disease uses multiple ML models including Logistic Regression, Random Forest, Gradient Boosting, SVM, KNN, and XGBoost.
-The best-performing models are stored in the /models/ directory.
+### 🏥 Multi-Disease Assessment
+Switch between four independent disease prediction modules from the sidebar.
 
-The project also includes:
+### 🤖 Machine Learning Pipeline
+The project evaluates multiple classification algorithms and stores trained model artifacts for inference.
 
-generate_report.py for creating the project report
+Models used across the project include:
 
-retrain_models.py for rebuilding the saved model artifacts
+- Logistic Regression
+- Random Forest
+- Decision Tree
+- Support Vector Machine (SVM)
+- K-Nearest Neighbors (KNN)
+- Gradient Boosting
+- XGBoost
 
-models/
-├── diabetes_model.joblib
-├── diabetes_scaler.joblib
-├── heart_model.joblib
-├── heart_scaler.joblib
-├── cancer_model.joblib
-├── cancer_scaler.joblib
-├── kidney_model.joblib
-├── kidney_scaler.joblib
+### 📊 Probability & Risk Results
+Where supported by the trained estimator, the interface exposes prediction probability information alongside the classification result.
 
- How to Run Locally
+### 📈 Model Performance
+The application includes model-performance information and visualizations for evaluating the trained pipelines.
 
-Clone the repository
+### 🧾 Prediction History
+Predictions made during the current Streamlit session can be reviewed from the history section.
 
+### 📦 Batch Prediction
+Compatible datasets can be processed through the application's batch prediction workflow.
+
+### 📄 Report Generation
+`generate_report.py` provides a utility for generating the project report.
+
+### 🔁 Model Retraining
+`retrain_models.py` provides a reproducible entry point for rebuilding saved model artifacts.
+
+### ☁️ Cloud Ready
+The repository contains the Streamlit configuration, dependency file and saved model artifacts required for cloud deployment.
+
+---
+
+## 🏗️ Architecture
+
+<p align="center">
+  <img src="assets/architecture.png" alt="MediScan AI system architecture" width="900">
+</p>
+
+### Prediction Flow
+
+```text
+Clinical Inputs
+      │
+      ▼
+Streamlit Interface
+      │
+      ▼
+Input Validation
+      │
+      ▼
+Feature Preparation / Scaling
+      │
+      ▼
+Saved ML Model
+      │
+      ▼
+Prediction + Probability
+      │
+      ▼
+Risk Assessment
+      │
+      ├──────────────► Session History
+      │
+      └──────────────► Performance / Visualization
+```
+
+---
+
+## 🔬 Machine Learning Workflow
+
+```text
+Dataset
+   │
+   ▼
+Data Cleaning
+   │
+   ▼
+Feature Selection / Preparation
+   │
+   ▼
+Train Multiple Classifiers
+   │
+   ├── Logistic Regression
+   ├── Random Forest
+   ├── Decision Tree
+   ├── SVM
+   ├── KNN
+   ├── Gradient Boosting
+   └── XGBoost
+   │
+   ▼
+Model Evaluation
+   │
+   ▼
+Best Model Selection
+   │
+   ▼
+Joblib Serialization
+   │
+   ▼
+Streamlit Inference
+```
+
+---
+
+## 🛠️ Technology Stack
+
+| Technology | Role |
+|---|---|
+| **Python 3.13** | Application and ML development |
+| **Streamlit** | Interactive web application |
+| **Scikit-learn 1.7.1** | Classification, preprocessing and evaluation |
+| **XGBoost** | Gradient boosting |
+| **Pandas** | Data manipulation |
+| **NumPy** | Numerical computation |
+| **Matplotlib** | Visualization |
+| **Seaborn** | Statistical visualization |
+| **Plotly** | Interactive charts |
+| **Joblib** | Model persistence |
+| **SHAP** | Model interpretation |
+| **python-docx / fpdf2** | Report generation |
+
+---
+
+## 📂 Project Structure
+
+```text
+Early_Disease_Detection/
+│
+├── app.py
+├── requirements.txt
+├── README.md
+│
+├── Early_Disease_Detection.ipynb
+├── generate_report.py
+├── retrain_models.py
+│
+├── .streamlit/
+│   └── config.toml
+│
+├── assets/
+│   ├── dashboard.png
+│   └── architecture.png
+│
+└── models/
+    ├── cancer_features.joblib
+    ├── cancer_model.joblib
+    ├── cancer_rf.joblib
+    │
+    ├── diabetes_features.joblib
+    ├── diabetes_model.joblib
+    ├── diabetes_rf.joblib
+    │
+    ├── heart_features.joblib
+    ├── heart_model.joblib
+    ├── heart_rf.joblib
+    ├── heart_scaler.joblib
+    │
+    ├── kidney_features.joblib
+    ├── kidney_model.joblib
+    ├── kidney_rf.joblib
+    └── kidney_scaler.joblib
+```
+
+> Model artifacts can change when the training pipeline is updated or models are retrained.
+
+---
+
+## ⚙️ Run Locally
+
+### 1. Clone the repository
+
+```bash
 git clone https://github.com/AkashdeepPahan/Early_Disease_Detection.git
 cd Early_Disease_Detection
+```
 
+### 2. Create a virtual environment
 
-Install dependencies
+**Windows**
 
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+```
+
+**Linux / macOS**
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+### 3. Install dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
+### 4. Run the application
 
-Run the Streamlit app
-
+```bash
 streamlit run app.py
+```
 
- Interface Preview
+The application will normally be available at:
 
- A minimal and elegant interface that allows users to:
+```text
+http://localhost:8501
+```
 
-Input their medical parameters
+---
 
-Select disease type
+## ☁️ Streamlit Community Cloud
 
-Instantly receive prediction results with probability scores
+The current deployment uses:
 
+```text
+Repository: AkashdeepPahan/Early_Disease_Detection
+Branch: main
+Entrypoint: app.py
+Python: 3.13
+Scikit-learn: 1.7.1
+```
 
- Links
+### Required files
 
- GitHub Repository: https://github.com/AkashdeepPahan/Early_Disease_Detection
+Keep these available in the repository:
 
+```text
+app.py
+requirements.txt
+.streamlit/config.toml
+models/
+```
 
- Contact
+The saved `.joblib` artifacts are required for prediction.
 
- Akashdeep Pahan
- GitHub: https://github.com/AkashdeepPahan
+> The Python version and ML package versions should remain compatible with the serialized model artifacts.
 
- Early Disease Detection Web App
+---
 
- If you found this project useful, please consider starring the repository on GitHub — it helps a lot!
+## 🔐 Demo Access
 
- Deployment Notes
+The application contains demonstration login roles for local/demo use.
 
- This project is ready to deploy as a Streamlit app.
+For security, **demo credentials are intentionally not published in this README**.
 
- Recommended setup:
+If the repository is used beyond a classroom/demo environment, replace the current demonstration authentication with a proper credential-management system and secure secret storage.
 
- Use [app.py](app.py) as the Streamlit entrypoint.
+---
 
- Keep the full /models folder in the deployment repository.
+## 🎯 Project Objectives
 
- Keep [requirements.txt](requirements.txt) at the project root.
+MediScan AI was built to demonstrate:
 
- Keep [.streamlit/config.toml](.streamlit/config.toml) for consistent theme and server settings.
+- Practical machine learning application development
+- Multi-classification model workflows
+- Feature preprocessing and scaling
+- Model evaluation and selection
+- Model serialization with Joblib
+- Interactive Streamlit application design
+- Prediction history and visualization
+- Cloud deployment
+- Reproducible model retraining
+- End-to-end integration of ML models into a usable application
 
- Demo login credentials:
+---
 
- admin / admin123
+## 🔮 Future Improvements
 
- doctor / mediscan
+- [ ] Improve probability calibration
+- [ ] Expand and diversify training datasets
+- [ ] Add additional disease modules
+- [ ] Improve explainable-AI visualizations
+- [ ] Add automated model monitoring
+- [ ] Add stronger authentication and authorization
+- [ ] Introduce secure database-backed user records
+- [ ] Add automated testing and CI/CD
+- [ ] Improve accessibility and responsive layouts
+- [ ] Add formal model validation and calibration reports
 
- guest / guest
+---
 
- For Streamlit Cloud:
+## ⚠️ Medical Disclaimer
 
- Set the main file to app.py.
+**MediScan AI is an educational and research demonstration.**
 
- Make sure all .joblib model files are included.
+The predictions generated by this application:
 
- If a network call fails in the performance tab, the app will fall back to benchmark values.
+- are not medical diagnoses;
+- are not a substitute for professional medical advice;
+- may contain errors or uncertainty;
+- should not be used alone to make healthcare decisions.
+
+Always consult a qualified healthcare professional for diagnosis, treatment and medical advice.
+
+---
+
+## 👨‍💻 Author
+
+### Akashdeep Pahan
+
+**GitHub:**  
+https://github.com/AkashdeepPahan
+
+**Project Repository:**  
+https://github.com/AkashdeepPahan/Early_Disease_Detection
+
+**Live Application:**  
+https://earlydiseasedetection-7jqksvxcqvy3c8c9hyrgfi.streamlit.app/
+
+---
+
+## ⭐ Support
+
+If you found the project interesting:
+
+⭐ Star the repository  
+🍴 Fork the project  
+🐛 Report an issue  
+💡 Suggest an improvement
+
+---
+
+<p align="center">
+  <strong>Built with Python • Scikit-learn • XGBoost • Streamlit</strong>
+</p>
