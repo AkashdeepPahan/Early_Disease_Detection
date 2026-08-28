@@ -1,13 +1,21 @@
-# Ignore Jupyter notebooks and checkpoints
-*.ipynb
-!Early_Disease_Detection.ipynb  # <-- ADD THIS LINE
-.ipynb_checkpoints/
-
-# Ignore Python cache
+# Python
 __pycache__/
 *.pyc
-*.pyo
+*.egg-info/
+.venv/
+venv/
 
-# Ignore OS files
+# Jupyter
+.ipynb_checkpoints
+
+# Streamlit
+.streamlit/secrets.toml
+
+# OS
 .DS_Store
 Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
